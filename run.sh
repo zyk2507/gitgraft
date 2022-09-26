@@ -1,12 +1,12 @@
 #! /bin/bash
 
 sudo -E apt update
-sudo -E apt install git coreutils -y
+sudo -E apt install git coreutils diffstat -y
 
 WORKDIR="$(pwd)"
 
 git config --global user.email "example@example.com"
-git config --gloabal user.name "example"
+git config --global user.name "example"
 
 git clone ${REPO_ORIGIN} origin
 git clone ${CHANGED_REPO} changed
