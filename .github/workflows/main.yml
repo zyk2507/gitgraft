@@ -1,0 +1,42 @@
+name: gitgraft
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo_origin:
+        description: "Original Repo"
+        reauired: true
+      changed_repo:
+        description: "Changed Repo"
+        required: true
+      branch:
+        description: "The branch you want to work on"
+        required: false
+      other_arguments:
+        description: "Additional Arguments"
+        required: false
+      subdir:
+        description: "Subdir"
+        required: false
+
+
+jobs:
+  setpackage:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Clone
+      id: clone
+      env:
+        REPO_ORIGIN: ${{ github.event.inputs.repo_origin }}
+        CHANGED_REPO: ${{ github.events.inputs.changed_repo }}
+        BRANCH: ${{ github.events.inputs.branch}}
+        OTHER_ARGS: ${{ github.events.inputs.other_arguments}} 
+        SUBDIR: ${{ github.events.input.subdir}}
+      run: |
+        cd $GITHUB_WORKSPACE
+        chmod a+x ./build.sh
+        chmod a+x ./gitgraft.sh
+        ./run.sh
