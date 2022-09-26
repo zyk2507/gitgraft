@@ -2,7 +2,7 @@
 
 sudo -E apt update
 sudo -E apt install git coreutils diffstat -y
-
+https://github.com/zyk2507/gitgraft/blob/master/run.sh
 WORKDIR="$(pwd)"
 
 git config --global user.email "example@example.com"
@@ -12,4 +12,3 @@ git clone ${REPO_ORIGIN} origin
 git clone ${CHANGED_REPO} changed
 
 sudo -E ./gitgraft.sh origin changed/${SUBDIR} -b ${BRANCH} -g -v
-sudo -E ./gitgraft.sh origin changed/${SUBDIR} -g -v
